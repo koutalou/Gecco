@@ -12,6 +12,10 @@ class AnnotationViewController: SpotlightViewController {
     
     @IBOutlet var annotationViews: [UIView]!
     
+    var targetOval: UILabel! = nil
+    var targetRect: UILabel! = nil
+    var targetRounded: UILabel! = nil
+    
     var stepIndex: Int = 0
     
     override func viewDidLoad() {
@@ -34,6 +38,12 @@ class AnnotationViewController: SpotlightViewController {
         case 3:
             spotlightView.move(Spotlight(shape: .Oval(center: CGPointMake(screenSize.width / 2, 200), width: 220)), moveType: .Disappear)
         case 4:
+            spotlightView.move(Spotlight(shape: .OvalWV(center: targetOval, margin: 5)), moveType: .Disappear)
+        case 5:
+            spotlightView.move(Spotlight(shape: .RectWV(center: targetRect, margin: 10)), moveType: .Disappear)
+        case 6:
+            spotlightView.move(Spotlight(shape: .RoundedRectWV(center: targetRounded, radius: 10, margin: 10)), moveType: .Disappear)
+        case 7:
             dismissViewControllerAnimated(animated, completion: nil)
         default:
             break

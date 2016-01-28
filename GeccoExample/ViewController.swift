@@ -10,6 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var ovalLabel: UILabel!
+    @IBOutlet weak var rectLabel: UILabel!
+    @IBOutlet weak var roundedLabel: UILabel!
+    
     var annotationViewController: AnnotationViewController?
 
     override func viewDidLoad() {
@@ -27,6 +31,9 @@ class ViewController: UIViewController {
     func presentAnnotation() {
         let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Annotation") as! AnnotationViewController
         viewController.alpha = 0.5
+        viewController.targetOval = ovalLabel
+        viewController.targetRect = rectLabel
+        viewController.targetRounded = roundedLabel
         presentViewController(viewController, animated: true, completion: nil)
         annotationViewController = viewController
     }
